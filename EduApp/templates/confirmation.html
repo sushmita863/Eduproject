@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+{% load static %}
+{%block content%}
+<link href="{% static 'CSS/style.css'%}" rel="stylesheet" />
+
+
+<div class="mt-4 p-3 bg-warning text-dark rounded container">
+    <h1>Hello!! {{uname}} </h1>
+    <p>You've successfully registered for {{product_title}} Course!! </p>
+  </div>
+
+  <br/><br/>
+
+
+{%endblock%}

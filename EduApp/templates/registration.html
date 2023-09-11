@@ -1,0 +1,74 @@
+{%extends 'base.html'%}
+{% load static%}
+{% block content %}
+<link href="{% static 'CSS/style.css'%}" rel="stylesheet"/>
+
+<section class="h-100 bg-light">
+    <div class="container py-5 h-100 ">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card card-registration my-4">
+            <div class="row g-0">
+              <div class="col-xl-6 d-none d-xl-block">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                  alt="Sample photo" class="img-fluid"
+                  style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+              </div>
+              <div class="col-xl-6">
+                <div class="card-body p-md-5 text-black">
+                  <h3 class="mb-5 text-uppercase text-danger">Student registration form</h3>
+                  <form method="POST" novalidate>
+                    {% csrf_token %}
+                    <h2>Sign Up</h2>
+                      
+                    {% for field in form %}
+                    <p>
+                      {% if field.errors %}
+                      <ul class="errorlist">
+                        {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                        {% endfor %}
+                      </ul>
+                      {% endif %}
+                       {{ field.label_tag }} {{ field }}
+                    </p>
+                    {% endfor %}
+                    <input type="submit" value="Register" />
+                    <p>Already has an account? <a href="{%url 'login' %}">Login</a></p>
+                  </form>
+  
+                  {% comment %} <form method="POST">
+                    {% csrf_token %}
+                    {{form.email.label}}
+                    {{form.email}}
+                    {{form.username.label}}
+                    {{form.username}}
+                    {{form.password1.label}}
+                    {{form.password1}}
+                    {{form.password2.label}}
+                    {{form.password2}}
+                    
+        
+                  <div class="d-flex justify-content-end pt-3">
+                  <button type="button" class="btn btn-light btn-lg">Reset all</button> 
+                  
+                    <button type="submit" class="btn btn-warning btn-lg ms-2">Register</button>
+                  </div>
+  
+                </form> {% endcomment %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  {% comment %} <form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+      <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form> {% endcomment %}
+  {%endblock%}

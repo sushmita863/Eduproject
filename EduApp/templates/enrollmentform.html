@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% load static%} {% block content %}
+<link href="{% static 'CSS/style.css'%}" rel="stylesheet" />
+
+
+<div class="md-5" style="width: 50rem; height:20rem">
+  <form method="POST">
+    {% csrf_token %}
+  
+    <div class="mb-3 mt-3">
+      <label for="Your name" class="form-label">Your Name:</label>
+      <input type="text" class="form-control" name="fname" id="fname" placeholder="name">
+    </div>
+
+    <div class="mb-3 mt-3">
+      <label for="Your Email" class="form-label">Your Email:</label>
+      <input type="email"  class="form-control" name="email" id="email" placeholder="Email">
+    </div>
+
+    <div class="mb-3 mt-3">
+      <label for="Your Contact" class="form-label">Your Contact:</label>
+      <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Contact number">
+    </div>
+    
+     <input type="submit" class="btn btn-primary" value="submit">
+
+  </form>
+</div>
+
+
+
+
+
+{% endblock %}

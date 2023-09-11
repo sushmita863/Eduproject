@@ -1,0 +1,109 @@
+
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link href="{% static 'CSS/style.css'%}" rel="stylesheet" />
+
+
+<h4>Course Description</h4>
+<div class="row">
+<div class = "card col-md-6 col-sm-4 col-lg-8  px-5 py-5"> 
+
+    <h1 class="text-color:black"> Overview </h1>
+    <h4>{{pro_desc.product}}</h4>
+    <p>{{pro_desc.description|safe}}</p>
+    
+</div>
+
+<div class = "card col-md-4 col-sm-4 col-lg-3 mx-5 px-5 py-5 "> 
+
+    <div class="text-center">
+
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+            <a class="text-dark" href="{% url 'addmission' %}"><button type="button" class="btn btn-danger">Enroll now</button></a>
+        
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a class="text-dark" href="{% url 'login' %}"><button type="button" class="btn btn-danger">Enroll now</button></a>
+         
+        </li>
+        {%endif %}
+
+
+   
+    </div>
+    <div class="text-center pt-3 text-dark">
+    <h4>Call us for course related queries</h4>
+    </div>
+    <div class="text-center pt-3 text-danger">
+    <h5>
+        +91 9311746545
+    </h5>
+</div>
+
+<div class="pt-3 text-dark">
+    <h5>
+        Includes
+    </h5>
+</div>
+
+<div class="row">
+    <i class="fi fi-rr-play"></i>
+    <h5>
+        On-demand video
+    </h5>
+</div>
+
+<div class="row">
+    <i class="fi fi-rr-play"></i>
+    <h5>
+        Full lifetime access
+    </h5>
+</div>
+
+<div class="row">
+    <i class="fi fi-rr-play"></i>
+    <h5>
+        Access on Smartphone
+    </h5>
+</div>
+
+<div class="row">
+    <i class="fi fi-rr-play"></i>
+    <h5>
+        Certificate of Completion
+    </h5>
+</div>
+
+</div>
+
+</div>
+
+
+<h4>Who should go for this training?</h4>
+<p>{{pro_desc.features|safe}}</p>
+<h4>Requirements</h4>
+<p>{{pro_desc.requirement|safe}}</p>
+
+<div></div>
+<h3>Duration||</h3>
+{{pro_desc.duration}}
+<br />
+
+
+{% if request.user.is_authenticated %}
+        <li class="nav-item">
+            <a class="text-dark" href="{% url 'addmission' %}"><button type="button" class="btn btn-danger">Enroll now</button></a>
+        
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a class="text-dark" href="{% url 'login' %}"><button type="button" class="btn btn-danger">Enroll now</button></a>
+         
+        </li>
+        {%endif %}
+
+<a href ="/contact"><button type="button" class="btn btn-danger">Contact us</button></a>
+<br/><br/>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static%} 
+{% block content %}
+<link href="{% static 'CSS/style.css'%}" rel="stylesheet" />
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<div class="container mt-5">
+
+
+
+    <form id="payment" action="/success/" method="POST">
+        {% csrf_token %}
+        <script
+            src="https://checkout.razorpay.com/v1/checkout.js"
+            data-key="{{ order.key }}"
+            data-amount="{{ order.amount }}"
+            data-currency="INR"
+            data-order_id="{{ order.id }}"
+            data-buttontext="Pay with Razorpay"
+            data-name="Your App Name"
+            data-description="Payment"
+            data-image="https://your-image-url.com/your-logo.png"
+            data-prefill.name="Your Name"
+            data-prefill.email="your@email.com"
+            data-theme.color="#F37254"
+        ></script>
+
+        <input required type="text" id="amount"  name="amount" class="form-control" placeholder="Enter amount">
+        <input required type="text" id="desc"  name="desc" class="form-control" placeholder="Enter Description">
+    
+        <button type="submit" class="btn btn-primary wow zoomIn">Send Message</button>
+    </form>
+    <div class="card px-4">
+        <p class="h8 py-3">Payment Details</p>
+        <div class="row gx-3">
+            <img src=" {% static 'images/qrcode.png' %}" alt="" style="height:200px; width:200px">
+            <label for="">Enter Transaction Number: </label>
+            <input type="number" minlength="12">
+            
+            </div>
+        </div>
+  
+  
+    </div>
+
+
+    <br/><br/>
+{% endblock  %}

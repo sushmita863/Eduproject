@@ -1,0 +1,72 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<link href="{% static 'CSS/style.css'%}" rel="stylesheet" />
+
+
+<h2 class="text-center">{{categories.name}}</h2>
+
+
+<h4 class="text-center">
+  Find out popular course categories and enroll to your desired course.
+</h4>
+
+  <section>
+    <div class="emply-text-sec">
+      <div class="container-fluid  ">
+      <div class="row " id="masonry_abc">
+       <!-- Development Courses -->
+    
+    
+        <div class="  row development">
+          {% for i in products%}
+         <div class="top_courses col-md-6 col-lg-4 col-xl-3">
+           <div class="thumb">
+             <img class="img-whp" src="{{i.pro_image.url}}" alt="Angular">
+             <div class="overlay">
+               <div class="tag tag-duration">Duration: {{i.Duration}}</div>
+               <div class="next-batch-overlaybox">
+                    <p>
+                   <span>Next Batch</span> <br>
+                   <b>{{i.startDate}}</b>
+                 </p>
+                  <a class="btn btn-danger" href="{% url 'Product_desc' i.id%}">Preview Course</a>
+               </div>
+             </div>
+           </div>
+           <div class="details">
+             <div class="tc_content">
+               <h5 class='text-dark'>{{i.name}}</h5>
+               <ul class="tc_review">
+                 <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
+               
+               </ul>
+             </div>
+           
+            </div>
+         </div>
+         {% endfor %}
+        </div>
+      </div>
+    </div>
+    </div>
+    </section>
+
+
+
+{% comment %} <div class="row">
+  {% for i in products%}
+  <a href="{% url 'description_view' i.id%}">
+    <div class="card col-md-4" style="width: 18rem">
+      <img
+        src="{% static 'images/softwareDev.jpg' %}"
+        class="card-img-top"
+        alt="fdbdbfgbgf"
+      />
+      <div class="card-body">
+        <p class="card-text">{{i}}</p>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div> {% endcomment %}
+<br/><br/>
+{% endblock %}

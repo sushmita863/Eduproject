@@ -1,0 +1,165 @@
+{% extends 'base.html' %} {% load static%} {% block content %}
+<link href="{% static 'CSS/style.css'%}" rel="stylesheet" />
+
+
+    {% comment %} <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+      
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ">
+            {% for i in cd%}
+            <li class="nav-item px-3 ">
+              <a class="text-danger " href="{% url 'product_view' i.id%}">
+                <p>{{i}}</p>
+            </a>
+              
+            </li>
+            {%endfor%}
+        
+          </ul>
+        </div>
+      </div>
+    </nav> {% endcomment %}
+    
+  
+
+
+  <div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+    
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'images/carousal2.jpg' %}" alt="Los Angeles" class="d-block" style="width:100%">
+        <div class="carousel-caption">
+          <h3>EDUGATOR</h3>
+          <p class="text-light"> Get All the courses</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/carousal1.jpg' %}" alt="Chicago" class="d-block" style="width:100%">
+        <div class="carousel-caption">
+          <h3>EDUGATOR</h3>
+          <p class="text-dark">Get All the courses</p>
+        </div> 
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/carousal2.jpg' %}" alt="New York" class="d-block" style="width:100%">
+        <div class="carousel-caption">
+          <h3>EDUGATOR</h3>
+          <p class="text-dark">Get All the courses</p>
+        </div>  
+      </div>
+    </div>
+    
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  {% comment %} <div class="card bg-dark text-white">
+    <img src="{% static 'images/carousal1.jpg'%}" class="card-img" alt="...">
+    <div class="card-img-overlay">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text">Last updated 3 mins ago</p>
+    </div>
+  </div> {% endcomment %}
+
+
+<h2 class="text-center">Course Category</h2>
+<h4 class="text-center">
+  Find out popular course categories and enroll to your desired course.
+</h4>
+
+
+<div class="container-fluid  ">
+<div class="row g-5 isotopGrid ">
+  {% for i in cd%}
+  
+<div class="card bg-white text-center text-white col-md-6 col-lg-4 col-xl-3  g-5    ">
+  <img src="{{i.image.url}}" class="card-img  py-2 wow zoomIn" alt="" style="height:150px"/>
+  <a class="text-light " href="{% url 'product_view' i.id%}">
+  <div class="card-img-overlay">
+    <div class ="card-header">{{i.name}}</div>
+      {% comment %} <h3 class="card-title text-center py-5 text-light">{{i.name}}</h3> {% endcomment %}
+    
+ 
+  </div>
+</a>
+</div>
+
+{%endfor%}
+</div>
+</div>
+
+
+
+<h2 class="text-center">Top Courses</h2>
+<h4 class="text-center">
+  Courses that make you achieve your goal in a short time.
+</h4>
+
+<section>
+<div class="emply-text-sec">
+  <div class="container-fluid  ">
+  <div class="row " id="masonry_abc">
+   <!-- Development Courses -->
+
+
+    <div class="  row development">
+      {% for i in topCourses %}
+     <div class="top_courses col-md-6 col-lg-4 col-xl-3">
+       <div class="thumb">
+         <img class="img-whp" src="{{i.product_img.url}}" alt="Angular">
+         <div class="overlay">
+           <div class="tag tag-duration">Duration: {{i.Duration}}</div>
+           <div class="next-batch-overlaybox">
+                <p>
+               <span>Next Batch</span> <br>
+               <b>{{i.startDate}}</b>
+             </p>
+              <a class="btn btn-danger" href="{% url 'Product_desc' i.id%}">Preview Course</a>
+           </div>
+         </div>
+       </div>
+       <div class="details">
+         <div class="tc_content">
+           <h5 class='text-dark'>{{i.course}}</h5>
+           <ul class="tc_review">
+             <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
+           
+           </ul>
+         </div>
+       
+        </div>
+     </div>
+     {% endfor %}
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+    
+
+ 
+
+    
+   
+
+
+
+
+{% endblock %}

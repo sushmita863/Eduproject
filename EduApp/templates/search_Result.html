@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content%}
+
+
+<div class="container">
+    <br/>
+    <h5>Courses you searched for...</h5>
+    <br/>
+</div>
+
+
+<section>
+    <div class="emply-text-sec">
+      <div class="container-fluid  ">
+      <div class="row " id="masonry_abc">
+       <!-- Development Courses -->
+    
+    
+        <div class="  row development">
+            {% for courses in object_list %}
+         <div class="top_courses col-md-6 col-lg-4 col-xl-3">
+           <div class="thumb">
+             <img class="img-whp" src="{{courses.pro_image.url}}" alt="Angular">
+             <div class="overlay">
+               <div class="tag tag-duration">Duration: {{courses.Duration}}</div>
+               <div class="next-batch-overlaybox">
+                    <p>
+                   <span>Next Batch</span> 
+                   <p>{{courses.startDate}}</p>
+                 </p>
+                  <a class="btn btn-danger" href="{% url  'Product_desc' courses.id%}">Preview Course</a>
+               </div>
+             </div>
+           </div>
+           <div class="details">
+             <div class="tc_content">
+               <h5 class='text-dark'>{{courses.name}}</h5>
+               <ul class="tc_review">
+                 <li class="list-inline-item"><a href="#"><i class="fa fa-star"></i></a></li>
+               
+               </ul>
+             </div>
+           
+            </div>
+         </div>
+         {% endfor %}
+        </div>
+      </div>
+    </div>
+    </div>
+    </section>
+
+
+
+
+
+
+<br/><br/>
+{%endblock%}
